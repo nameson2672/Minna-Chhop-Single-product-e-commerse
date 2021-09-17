@@ -5,7 +5,7 @@ import { useState } from 'react';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
   
-export default function CheckoutComponent() {
+export default function CheckoutComponent({uid}) {
 
   const [sessionId, setSessionId] = useState();
   const [product, setProduct] = useState({
@@ -26,20 +26,16 @@ export default function CheckoutComponent() {
     const stripe = await loadStripe(
     "pk_test_51JY6mgBCGK9w7fWO0rZyM9IhQoQZvoJmmpXzNfdUxBtwtKEkIhx1eYYOgdcjgGUro4m05gzXwAFHwfcALlI4p7Vw00460O6klJ"
   );
-    
+    console.log(uid);
     const body = { line_items: [product] }
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     const data =  await axios({
       method: 'post',
       url: 'http://localhost:4000/checkout',
       crossDomain : true,
-      data: product
+      data: { uid: uid, product }
             })
     
-    // ;
-
-
-    // console.log(data.data.data.checkoutUrl.id)
     const { error } = await stripe.redirectToCheckout({ sessionId: data.data.data.checkoutUrl.id })
 
      

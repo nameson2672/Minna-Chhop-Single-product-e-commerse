@@ -8,6 +8,7 @@ import CheckoutComponent from './checkout.js';
 
 function App() {
   const [user, setUser] = useState();
+  const [uid, setUid] = useState();
   
   const responseGooglePass = (data) => {
     console.log(data.profileObj);
@@ -21,15 +22,10 @@ function App() {
   url: 'http://localhost:4000/login',
   data: googleRes,
     }).then(data => {
-      console.log(data);
-    })
+      setUid(data.data.data._id);
       
-;
-    // axios.post('http://localhost:4000/login', {
-    //   data: data
-    // }).then(res => {
-    //   console.log(res)
-    // }).catch(error => console.log(error));
+    });
+
   }
   console.log(user);
   const responseGoogleFail = (data) => {
@@ -38,7 +34,6 @@ function App() {
     return (
     <div className="App">
       <h2>APP is Running</h2>
-        <a href="http://localhost:3000/auth/google"> SIGN in with Google </a>
           <GoogleLogin
             clientId="187213291535-p0j7bqtg5eoro1ftgrrq0sdlerukqleu.apps.googleusercontent.com"
             buttonText="Login with Google"
@@ -47,7 +42,7 @@ function App() {
             isSignedIn={true}
             cookiePolicy={'single_host_origin'}
         />
-        <CheckoutComponent />
+        {/* <CheckoutComponent uid={uid}/> */}
     </div>
   );
 }
