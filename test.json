@@ -1,0 +1,12 @@
+{
+    "_id":"614178457e5218da9312fb43",
+    "data:"{
+        "user":"614178457e5218da9312fb43",
+        "productId": "1",
+        "orderQuantity":2,
+        "shippingAdress": "kushma-5, parbat", 
+        "price": 268,
+        "paymentDetails": "paid",
+    }
+    
+}
