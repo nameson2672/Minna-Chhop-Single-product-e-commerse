@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lato&display=swap');
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,3 +16,24 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.grad-hero-bg{
+background: url('../src//pics/Group\ 11.png') no-repeat, fixed, center;
+}
+
+.lower_bg{
+  position: absolute;
+  width: 100%;
+  height: 100px;
+ 
+}
+.lower_bg::before{
+  content: " ";
+  position: absolute;
+  width: 100%;
+  bottom: -200px;
+  z-index: 50;
+  height: 200px;
+  top: 50px;
+  background-color: black;
+}
