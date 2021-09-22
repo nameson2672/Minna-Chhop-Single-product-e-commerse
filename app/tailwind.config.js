@@ -1,42 +1,48 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      display: ['"Lato"', 'sans-serif'],
-      script: ['"Dancing Script"', 'cursive']
+      display: ['"Lato"', "sans-serif"],
+      script: ['"Dancing Script"', "cursive"],
     },
     colors: {
       textGreen: {
-        DEFAULT: '#6EBC82',
+        DEFAULT: "#6EBC82",
       },
       textBlack: {
-          DEFAULT: '#3C413D'
-        },
+        DEFAULT: "#3C413D",
+      },
       cardBg: {
-        DEFAULT: '#EBEBEB'
+        DEFAULT: "#EBEBEB",
       },
       btnBlue: {
-        DEFAULT: '#6D87EE'
+        DEFAULT: "#6D87EE",
       },
       btnBlueHover: {
-        DEFAULT: '#33479b'
+        DEFAULT: "#33479b",
       },
       titleDark: {
-        DEFAULT: '#3C413D'
+        DEFAULT: "#3C413D",
       },
       iconBg: {
-        DEFAULT: '#CAE8D7'
+        DEFAULT: "#CAE8D7",
       },
       footerText: {
-        DEFAULT: '#EBEBEB'
+        DEFAULT: "#EBEBEB",
       },
       bodyBg: {
-        DEFAULT: '#cccccc'
+        DEFAULT: "#b4b4b4",
       },
       white: {
-        DEFAULT:'#FFFFFF'
-      }
+        DEFAULT: "#ffffff",
+      },
+      shopDark: {
+        DEFAULT: "#B7B4B4",
+      },
+      shopLight: {
+        DEFAULT: "#D5D5D5",
+      },
     },
     extend: {},
   },
@@ -44,4 +50,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};
