@@ -18,7 +18,9 @@ code {
 @tailwind utilities;
 
 .grad-hero-bg{
-background: url('../src//pics/Group\ 11.png') no-repeat, fixed, center;
+  background: rgb(108,216,136);
+background: linear-gradient(0deg, rgba(108,216,136,1) 23%, rgba(110,188,130,1) 23%, rgba(142,244,168,1) 23%, rgba(231,231,231,1) 100%);
+/* background: url('../src//pics/Group\ 11.png') no-repeat, fixed, center; */
 }
 
 .lower_bg{
@@ -36,4 +38,12 @@ background: url('../src//pics/Group\ 11.png') no-repeat, fixed, center;
   height: 200px;
   top: 50px;
   background-color: black;
+}
+
+.spinner{
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgb(197, 191, 191);
+  border-radius: 50%;
+  border-top: 2px solid rgb(44, 93, 197);
 }

@@ -6,18 +6,16 @@ import mailSender from "../Utils/mailSender.js";
 export const createOrder = async (req, res, next) => {
     const id = req.body._id;
     const user = await User.findById(id);
-    console.log(user)
 
     if (user) {
         const orderItems = req.body.data;
-        console.log(orderItems);
         const order = await Order.create({ ...orderItems });
         const options = {
             email: user.email,
             subject: 'Sign in from device',
             html: `Hey, ${user.name} thank you for buying our chhop. Chhop will be deliver to you soon`
         }
-        if (newUser) {
+        if (order) {
             mailSender(options);
         }
         res.status(200).json({
@@ -112,4 +110,19 @@ export const updateOrderForAdmin = async (req, res, next) => {
             error: 'You must be admin to update order',
         })
     }
+}
+
+export const sendInfoForContact = async (req, res, next) => {
+    const details = req.body.data;
+    const options = {
+            email: 'namesongaudel.ng@gmail.com',
+            subject: 'Someone Want to contact you',
+            html: `Hey, a man with email ${details.email} and phone no ${details.phone} send you message "${details.message}"`
+        }
+    mailSender(options);
+    res.status(200).json({
+        sucess: true,
+        data: "We will contack you sortly"
+    })  
+
 }

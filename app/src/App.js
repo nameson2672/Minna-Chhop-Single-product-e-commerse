@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CheckoutComponent from "./checkout.js";
 
 // Component import
@@ -12,30 +12,39 @@ import Icons from "./Components/Icons";
 import Footer from "Components/Footer";
 import Login from "./Components/Login";
 import ShopModel from "Components/ShopModel";
+import AboutUs from 'Components/AboutUs'
+import ContactUs from "Components/ContactUs";
 
 function App() {
   const [loginModelOpen, SetLoginModelOpen] = useState(false);
   const [shopModelOpen, setShopModelOpen] = useState(false);
-  const user = {
-    avtar :"https://lh3.googleusercontent.com/a-/AOh14GiNETS2iWi2xVRMTe3lsNOZeEL4YUspRHOd7xTz=s96-c",
-    name : "Nameson Gaudel"
-  }
-
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const name = window.localStorage.getItem('name');
+    const imageUrl = window.localStorage.getItem('imageUrl');
+    if (name && imageUrl) {
+      setUser({ name, imageUrl }); 
+    }
+  }, [])
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen overflow-x-hidden">
       {loginModelOpen && (
-        <Login loginModel={SetLoginModelOpen} showModal={loginModelOpen} />
+        <Login
+          loginModel={SetLoginModelOpen}
+          showModal={loginModelOpen}
+          setUser={setUser}
+          user={user}
+        />
       )}
-      {shopModelOpen && <ShopModel setModel={setShopModelOpen} />}
-
+      {shopModelOpen && <ShopModel setModel={setShopModelOpen} user={user} />}
       <div className="bg-bodyBg grad-hero-bg relative min-h-screen">
         <Navbar
           user={user}
-          className=" z-50  top-0 "
+          className="  top-0 "
           loginModel={SetLoginModelOpen}
           shopModal={setShopModelOpen}
         />
-        <div className="container mx-auto grid content-center grid-cols-2  text-textBlack  text-left mt-16">
+        <div className="container mx-auto grid content-center grid-cols-2  text-textBlack  text-left mt-16 ">
           <div className="max-w-lg font-display mt-56 ">
             <p className="text-4xl px-1">Premium Food Product</p>
             <p className="text-7xl leading-tight text-titleDark">
@@ -48,7 +57,7 @@ function App() {
             <img
               src={HeroImg}
               alt="Chhop image packed"
-              className=" max-w-4xl   "
+              className=" max-w-4xl"
             />
           </div>
         </div>
@@ -68,6 +77,8 @@ function App() {
           <CardIcons />
         </div>
         <Shop setModel={setShopModelOpen} />
+        <AboutUs />
+        <ContactUs />
         <Icons />
         <Footer />
       </div>

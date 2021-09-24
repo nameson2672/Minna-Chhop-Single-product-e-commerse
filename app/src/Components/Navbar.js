@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 import logo from "../pics/logo.png";
+import {GoogleLogout} from 'react-google-login'
 
 function Navbar({ loginModel, shopModal, user }) {
   const showLoginModel = () => {
@@ -19,7 +20,7 @@ function Navbar({ loginModel, shopModal, user }) {
         {user && (
           <div className="flex justify-center items-center flex-col">
             <img
-              src={user.avtar}
+              src={user.imageUrl}
               alt="user image"
               className="w-12 rounded-full"
             />
@@ -43,6 +44,11 @@ function Navbar({ loginModel, shopModal, user }) {
               {!user && (
                 <li className=" px-6 mx-1.5" onClick={showLoginModel}>
                   <p className="cursor-pointer">JOIN</p>
+                </li>
+              )}
+              {user && (
+                <li className=" px-6 mx-1.5" onClick={showLoginModel}>
+                  <p className="cursor-pointer uppercase">Logout</p>
                 </li>
               )}
             </ul>

@@ -3,9 +3,7 @@ import product from "../pics/product.png";
 import add from "../pics/add.png";
 import minus from "../pics/minus.png";
 
-function Counter() {
-    const [quantity, setQuantity] = useState(1);
-    const [price, setPrice] = useState(1);
+function Counter({quantity, setQuantity, price, setPrice}) {
     const increment = () => {
         if (quantity >= 0) {
             setQuantity(quantity + 1);
