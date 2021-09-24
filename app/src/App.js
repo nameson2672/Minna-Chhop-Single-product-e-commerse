@@ -40,24 +40,26 @@ function App() {
       <div className="bg-bodyBg grad-hero-bg relative min-h-screen">
         <Navbar
           user={user}
-          className="  top-0 "
+          className=" top-0 "
           loginModel={SetLoginModelOpen}
           shopModal={setShopModelOpen}
         />
-        <div className="container mx-auto grid content-center grid-cols-2  text-textBlack  text-left mt-16 ">
-          <div className="max-w-lg font-display mt-56 ">
-            <p className="text-4xl px-1">Premium Food Product</p>
-            <p className="text-7xl leading-tight text-titleDark">
+        <div className="container   2xl:mx-auto 2xl:grid 2xl:content-center grid-cols-2  text-textBlack  2xl:text-left xl:grid xl:content-center xl:grid-cols-2  xl:mx-auto lg:flex lg:flex-col lg:justify-center lg:items-center sm:flex sm:flex-col sm:justify-center sm:items-center mt-12 flex justify-center items-center flex-col">
+          <div className="2xl:max-w-lg font-display  xl:max-w-md xl:mt-32 xl:ml-8 lg:max-w-md lg:text-center lg:flex lg:flex-col lg:justify-center lg:items-center lg:mt-20 sm:max-w-sm sm:text-center sm:flex sm:flex-col sm:justify-center sm:items-center sm:mt-24 xl:text-left xl:block   ">
+            <p className="2xl:text-4xl xl:px-1 xl:text-4xl lg:text-4xl sm:text-2xl">
+              Premium Food Product
+            </p>
+            <p className="2xl:text-7xl leading-tight text-titleDark xl:text-7xl lg:text-7xl sm:text-5xl">
               HOMEMADE Timur ko chhop
             </p>
             <p className="font-script text-xl">made with love</p>
             <ShopBtn setModel={setShopModelOpen} />
           </div>
-          <div className="mt-32">
+          <div className=" xl:mt-48 lg:mt-40 sm:mt-40">
             <img
               src={HeroImg}
               alt="Chhop image packed"
-              className=" max-w-4xl"
+              className=" 2xl:max-w-4xl xl:max-w-2xl lg:max-w-4xl sm:max-w-xl"
             />
           </div>
         </div>
@@ -73,7 +75,7 @@ function App() {
       </div>
 
       <div className="bg-bodyBg">
-        <div className="container mx-auto py-24">
+        <div className="container mx-auto sm:py-24">
           <CardIcons />
         </div>
         <Shop setModel={setShopModelOpen} />

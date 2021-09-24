@@ -17,15 +17,15 @@ function Counter({quantity, setQuantity, price, setPrice}) {
         }
     }
     return (
-      <div className="col-span-2 ">
+      <div className="sm:col-span-2 p-2 sm:p-0">
         <div className="rounded-md">
-          <div className="bg-textGreen rounded-t  ">
-            <img src={product} alt="Chhop minna sharma" className="w-64 p-3" />
+          <div className="bg-textGreen rounded-t ">
+            <img src={product} alt="Chhop minna sharma" className="sm:w-64 w-32 sm:p-3" />
           </div>
-          <div className="bg-shopLight rounded-b-md px-5 py-2">
-            <div className="px-2 grid place-content-center text-center ">
+          <div className="bg-shopLight rounded-b-md sm:px-5 py-2">
+            <div className="sm:px-2 grid place-content-center text-center w-40 "> 
               <p className="text-xl pb-3">Homade Chhop</p>
-              <div className="bg-shopDark  flex justify-between rounded-lg  px-3 py-2">
+              <div className="bg-shopDark  flex justify-between sm:items-center rounded-lg  sm:px-3 sm:py-2 sm:w-48 ">
                 <img
                   onClick={decrement}                  
                   src={minus}
@@ -33,12 +33,12 @@ function Counter({quantity, setQuantity, price, setPrice}) {
                   className="cursor-pointer w-7"
                                 
                 />
-                <p className="mx-10 text-xl">{quantity}</p>
+                <p className="sm:mx-10 mx-5  text-xl">{quantity}</p>
                 <img src={add} alt="add btn" className="cursor-pointer w-7" onClick={increment} />
               </div>
             </div>
 
-            <div className="">
+            <div className="w-40 p-2 sm:p-0 sm:w-52"> 
               <div className="flex justify-between items-center my-2">
                 <p>Per product</p>
                 <p>$ 1.00</p>

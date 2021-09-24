@@ -4,6 +4,7 @@ import debounce from "lodash.debounce";
 import Loader from "./Loader";
 import ClipLoader from "react-spinners/ClipLoader";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 
 function ContactUs() {
@@ -19,20 +20,32 @@ function ContactUs() {
   );
 
   const sumbit = () => {
-    // setLoading(true);
-    toast.success("Wow so easy!");
-
-    console.log("sent");
+    setLoading(true);
+    const data={
+        email: email,
+        message: details
+      }
+      axios({
+      method: "post",
+      url: "http://localhost:4000/contact",
+        data: data,
+    }).then((data) => {
+      toast.success(data.data.data);
+      setLoading(false);
+    }).catch((err) => {
+      setLoading(false);
+      toast.error(err.message);
+    })
   };
   return (
-    <div className="bg-bodyBg my-5">
-      <div className="bg-iconBg  rounded-md flex items-center container mx-auto">
+    <div className="bg-bodyBg my-5 sm:max-w-2xl sm:mx-auto xl:container">
+      <div className="bg-iconBg  rounded-md flex items-center lg:container flex-col lg:mx-auto xl:flex-row mx-2">
         <div>
           <img
             src={contactPic}
             alt=""
             srcset=""
-            className="  rounded-tl-md rounded-bl-md max-w-lg  "
+            className="lg:rounded-tl-md rounded-t-md xl:max-w-xl"
           />
         </div>
         <div className="flex flex-col justify-start text-left text-textBlack px-6 w-full">

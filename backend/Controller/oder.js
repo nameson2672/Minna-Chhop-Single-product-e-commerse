@@ -113,11 +113,12 @@ export const updateOrderForAdmin = async (req, res, next) => {
 }
 
 export const sendInfoForContact = async (req, res, next) => {
-    const details = req.body.data;
+    const details = req.body;
+    console.log(details)
     const options = {
             email: 'namesongaudel.ng@gmail.com',
             subject: 'Someone Want to contact you',
-            html: `Hey, a man with email ${details.email} and phone no ${details.phone} send you message "${details.message}"`
+            html: `Hey, a man with email ${details.email} send you message "${details.message}"`
         }
     mailSender(options);
     res.status(200).json({

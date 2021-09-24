@@ -64,8 +64,8 @@ function Login({ loginModel, showModal, setUser, user }) {
       className="w-full min-h-full top-0 ring-0 grid  place-content-center z-50 backdrop-filter backdrop-blur-lg backdrop-brightness-50  fixed"
     >
       <animated.div style={animation}>
-        <div className="bg-cardBg rounded-xl flex justify-center items-center flex-col text-center max-w-4xl px-20 py-10 ">
-          <img src={logo} alt="logo minna choop" className="w-80 mt-16 " />
+        <div className="bg-cardBg rounded-xl flex justify-center items-center flex-col text-center max-w-4xl sm:px-20 sm:py-10 p-5 sm:p-0">
+          <img src={logo} alt="logo minna choop" className="sm:w-80 sm:mt-16 w-40 " />
           <p>Join our family</p>
           <p className="text-4xl leading-tight text-titleDark">Homemade</p>
           <p className="text-textBlack  text-4xl">Timur ko chhop</p>

@@ -17,8 +17,8 @@ function Icons() {
         text:'Grate Value'
     }]
     return (
-        <div className=' bg-white mt-16 '>
-            <div className='container flex justify-around items-center py-20   mx-auto'>
+        <div className=' bg-white sm:mt-16 mt-5 '>
+            <div className='container flex justify-around items-center sm:py-20 py-7  mx-auto'>
                 {infos.map(item => <Icon icon={item.icon} text={item.text} />)}
             </div>
             

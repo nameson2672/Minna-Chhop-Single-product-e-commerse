@@ -73,21 +73,21 @@ function Details({ user, price, quantity }) {
   );
 
   return (
-    <div className="col-span-3 bg-shopLight p-9 px-8 rounded-t rounded-b  flex justify-center items-center flex-col text-center">
+    <div className="col-span-3 bg-shopLight sm:p-9 sm:px-8 rounded-t rounded-b  flex justify-center items-center flex-col text-center p-2 m-2 sm:m-0">
       {user && (
-        <div className="flex  justify-center items-center flex-col text-center w-60">
-          <img src={user.imageUrl} alt="User image" className="rounded-full" />
+        <div className="flex  justify-center items-center flex-col text-center sm:w-60">
+          <img src={user.imageUrl} alt="User image" className="rounded-full w-9" />
           <p className="text-xl">{user.name}</p>
         </div>
       )}
-      <div className="h-0.5 bg-textGreen w-full mb-2"></div>
+      <div className="h-0.5 bg-textGreen sm:w-full mb-2"></div>
       <div className="text-left">
         <div className="mt-4">
           <p className="text-base text-titleDark">Phone Number</p>
           <input
             type="text"
             name="Phone number"
-            className="border-none outline-none px-3 w-64 py-2  rounded-sm"
+            className="border-none outline-none px-3 sm:w-64 sm:py-2  rounded-sm"
             onChange={(e) => setWithDebounce(e, setPhone)}
           />
         </div>
@@ -96,13 +96,13 @@ function Details({ user, price, quantity }) {
           <textarea
             type="text"
             name="Infroramtion"
-            className="border-none outline-none px-3 w-96 h-24 overflow-hidden py-2  rounded-sm"
+            className="border-none outline-none px-3 sm:w-96 sm:h-24 sm:overflow-hidden py-2  rounded-sm "
             onChange={(e) => setWithDebounce(e, setDetails)}
           />
         </div>
 
         <button
-          className="bg-textGreen text-white hover:bg-btnBlue text-xl px-28 py-2 my-4 rounded-lg h-14"
+          className="bg-textGreen text-white hover:bg-btnBlue text-xl sm:px-28 py-2 sm:my-4 rounded-lg h-14 px-14 "
           disabled={loading}
           onClick={handleClick}
         >

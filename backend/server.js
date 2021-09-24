@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import mongoSanitize from 'express-mongo-sanitize';
 import helmet from 'helmet';
 import xss from 'xss-clean';
+import path from 'path';
 
 dotenv.config();
 
@@ -36,6 +37,14 @@ import UserRoute from "./Router/AuthRouter.js";
 
 // Setup routes
 app.use("/", UserRoute);
+
+const __dirname = path.resolve();
+if (process.env.STATUS === "production") {
+  app.use(express.static(path.join(__dirname, "../app/build")))
+  app.use('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../', 'app', 'build', 'index.html'))
+  })
+}
 
 // Set lisner port
 const port = 4000;

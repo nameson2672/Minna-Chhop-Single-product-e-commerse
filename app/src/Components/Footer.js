@@ -11,7 +11,7 @@ function Footer() {
                     <i class="fab fa-instagram mx-6 "></i>
                     <i class="fab fa-twitter"></i>
                 </div>
-                <p className="text-footerText text-lg my-6">Healthy, Quality, Tasty and Love in your house</p>
+                <p className="text-footerText text-lg my-6 sm:mx-0 mx-4 text-center">Healthy, Quality, Tasty and Love in your house</p>
             </div>
             <div className="bg-textGreen h-0.5"></div>
             <p className="py-6 container text-center text-footerText text-lg mx-auto">Copyright 2021 | Minna Chhop</p>

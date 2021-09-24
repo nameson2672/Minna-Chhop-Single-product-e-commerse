@@ -25,7 +25,7 @@ function CardIcons() {
     },
   ];
   return (
-    <div className="flex justify-around relative px-40 ">
+    <div className="flex justify-around relative sm:flex-row flex-col py-5">
       {infos.map((item) => (
         <CardIcon icon={item.icon} text={item.text} title={item.title} />
       ))}

@@ -13,9 +13,9 @@ function Navbar({ loginModel, shopModal, user }) {
 
   return (
     <div className="z-50">
-      <div className="container mx-auto flex justify-between items-center h-28 ">
-        <div>
-          <img src={logo} alt="logo" srcset="" className=" w-64 px-6" />
+      <div className="container mx-auto flex justify-center items-center  flex-col sm:flex-row sm:justify-between sm:items-center">
+        <div className="flex justify-centre items-center">
+          <img src={logo} alt="logo" srcset="" className=" w-40 sm:w-90 sm:px-6  px-1" />
         </div>
         {user && (
           <div className="flex justify-center items-center flex-col">
@@ -30,24 +30,24 @@ function Navbar({ loginModel, shopModal, user }) {
         <div className=" text-textBlack font-normal text-sm font-display">
           <Router>
             <ul className=" flex justify-between px-4">
-              <li className=" px-6 mx-1.5 ">
+              <li className=" sm:px-6 mx-1.5 ">
                 <p className="cursor-pointer" onClick={showShopModel}>
                   SHOP
                 </p>
               </li>
-              <li className=" px-6 mx-1.5">
+              <li className=" sm:px-6 mx-1.5">
                 <p className="cursor-pointer">ABOUTUS</p>
               </li>
-              <li className=" px-6 mx-1.5">
+              <li className=" sm:px-6 mx-1.5">
                 <p className="cursor-pointer">CONTACT</p>
               </li>
               {!user && (
-                <li className=" px-6 mx-1.5" onClick={showLoginModel}>
+                <li className=" sm:px-6 mx-1.5" onClick={showLoginModel}>
                   <p className="cursor-pointer">JOIN</p>
                 </li>
               )}
               {user && (
-                <li className=" px-6 mx-1.5" onClick={showLoginModel}>
+                <li className=" sm:px-6 mx-1.5" onClick={showLoginModel}>
                   <p className="cursor-pointer uppercase">Logout</p>
                 </li>
               )}
