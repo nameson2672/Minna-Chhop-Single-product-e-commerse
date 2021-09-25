@@ -16,11 +16,10 @@ function Login({ loginModel, showModal, setUser, user }) {
   };
 
   const animation = useSpring({
-    config: {
-      duration: 250,
-    },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? `translateY(0%)` : `translateY(-100%)`,
+    
+    from: { factor: 10, opacity: 0, scale: 0.9, freq: '0.0175, 0.0', transform:`translateY(-100%)`  },
+    to: { factor: 150, opacity: 1, scale: 1, freq: '0.0, 0.0' ,transform:`translateY(0%)` },
+    config: { duration: 300 },
   });
 
 

@@ -79,8 +79,13 @@ function App() {
           <CardIcons />
         </div>
         <Shop setModel={setShopModelOpen} />
-        <AboutUs />
-        <ContactUs />
+        <section id="aboutus">
+          <AboutUs />
+        </section>
+        <section id="contactus">
+          <ContactUs />
+        </section>
+
         <Icons />
         <Footer />
       </div>

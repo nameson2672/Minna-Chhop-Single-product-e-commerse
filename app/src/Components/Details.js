@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import debounce from "lodash.debounce";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 function Details({ user, price, quantity }) {
   const domain = "http://localhost:3000";
@@ -55,11 +56,15 @@ function Details({ user, price, quantity }) {
           });
           if (error) {
             setLoading(false);
+            toast.error('Got some error try again');
           }
         }
+      } else {
+        setLoading(false);
+        toast.error("Join before you proceed to buy.")
       }
     } else {
-      console.log("running")
+      toast.error("Please Enter your phone and details.");
       setLoading(false);
       
     }
@@ -76,7 +81,11 @@ function Details({ user, price, quantity }) {
     <div className="col-span-3 bg-shopLight sm:p-9 sm:px-8 rounded-t rounded-b  flex justify-center items-center flex-col text-center p-2 m-2 sm:m-0">
       {user && (
         <div className="flex  justify-center items-center flex-col text-center sm:w-60">
-          <img src={user.imageUrl} alt="User image" className="rounded-full w-9" />
+          <img
+            src={user.imageUrl}
+            alt="User image"
+            className="rounded-full w-9"
+          />
           <p className="text-xl">{user.name}</p>
         </div>
       )}
@@ -106,6 +115,7 @@ function Details({ user, price, quantity }) {
           disabled={loading}
           onClick={handleClick}
         >
+          <Toaster />
           {" "}
           {loading ? (
             <div className="spinner animate-spin"></div>
