@@ -38,7 +38,7 @@ function Login({ loginModel, showModal, setUser, user }) {
     }
     axios({
       method: "post",
-      url: "http://localhost:4000/login",
+      url: "http://localhost:3000/login",
       data: googleRes,
     }).then((data) => {
       setUid(data.data.data._id);
@@ -55,6 +55,7 @@ function Login({ loginModel, showModal, setUser, user }) {
 
   const responseGoogleFail = (data) => {
     console.log("Fail to login");
+    console.log(data);
   };
 
   return (
@@ -65,7 +66,11 @@ function Login({ loginModel, showModal, setUser, user }) {
     >
       <animated.div style={animation}>
         <div className="bg-cardBg rounded-xl flex justify-center items-center flex-col text-center max-w-4xl sm:px-20 sm:py-10 p-5 sm:p-0">
-          <img src={logo} alt="logo minna choop" className="sm:w-80 sm:mt-16 w-40 " />
+          <img
+            src={logo}
+            alt="logo minna choop"
+            className="sm:w-80 sm:mt-16 w-40 "
+          />
           <p>Join our family</p>
           <p className="text-4xl leading-tight text-titleDark">Homemade</p>
           <p className="text-textBlack  text-4xl">Timur ko chhop</p>
@@ -82,7 +87,7 @@ function Login({ loginModel, showModal, setUser, user }) {
             )}
             {user && (
               <GoogleLogout
-                clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                clientId="187213291535-p0j7bqtg5eoro1ftgrrq0sdlerukqleu.apps.googleusercontent.com"
                 buttonText="Logout"
                 onLogoutSuccess={logout}
               />

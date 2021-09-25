@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
 function Details({ user, price, quantity }) {
-  const domain = "http://localhost:4000";
+  const domain = "http://localhost:3000";
   const [phone, setPhone] = useState(null);
   const [details, setDetails] = useState(null);
   const [sessionId, setSessionId] = useState();

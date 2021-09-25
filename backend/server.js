@@ -17,14 +17,16 @@ const app = express();
 // Body parser
 app.use(bodyParser.json({ verify: (req, res, buffer) => (req['rawBody'] = buffer) }));
 
-// sqcurity
+
 app.use(mongoSanitize());
-app.use(helmet());
+app.use(
+  helmet({ contentSecurityPolicy: false, })
+);
 app.use(xss());
 
 
 // Cors middleware for cross site fatching
-app.use(cors({origin: true}));
+app.use(cors());
 
 // Importing utils
 import connectDB from "./config/db.js";
@@ -47,7 +49,7 @@ if (process.env.STATUS === "production") {
 }
 
 // Set lisner port
-const port = 4000;
+const port = 3000;
 app.listen(
   port,
   console.log(`API is running on port ${port}`.green.bold.inverse)
