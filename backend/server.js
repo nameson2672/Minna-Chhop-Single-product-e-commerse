@@ -42,9 +42,9 @@ app.use("/", UserRoute);
 
 const __dirname = path.resolve();
 if (process.env.STATUS === "production") {
-  app.use(express.static(path.join(__dirname, "../app/build")))
+  app.use(express.static(path.join(__dirname, "./app/build")))
   app.use('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../', 'app', 'build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'app', 'build', 'index.html'))
   })
 }
 
