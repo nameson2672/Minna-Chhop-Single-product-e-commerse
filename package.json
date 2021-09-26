@@ -5,7 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./backend/server.js",
+    "start": "node /backend/server",
+    "dev": "nodemon ./backend/server",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false NODE_NO_WARNINGS=1 npm install --prefix app && npm run build --prefix app"
   },
   "author": "",
