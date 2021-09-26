@@ -21,63 +21,67 @@ function Details({ user, price, quantity }) {
   console.log(quantity)
 
   const handleClick = async (event) => {
-    setProduct({... quantity = quantity})
-    setLoading(true);
-    const stripe = await loadStripe(
-      "pk_test_51JY6mgBCGK9w7fWO0rZyM9IhQoQZvoJmmpXzNfdUxBtwtKEkIhx1eYYOgdcjgGUro4m05gzXwAFHwfcALlI4p7Vw00460O6klJ"
-    );
-    const uid = window.localStorage.getItem("uid")
+    try {
+      setProduct({ ...quantity = quantity })
+      setLoading(true);
+      const stripe = await loadStripe(
+        "pk_test_51JY6mgBCGK9w7fWO0rZyM9IhQoQZvoJmmpXzNfdUxBtwtKEkIhx1eYYOgdcjgGUro4m05gzXwAFHwfcALlI4p7Vw00460O6klJ"
+      );
+      const uid = window.localStorage.getItem("uid")
     
-    const body = { line_items: [product] };
-    axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
-    if (phone && details) {
-      if (uid) {
-        const createOrder = await axios({
-          method: "POST",
-          url: `${domain}/order`,
-          data: {
-            _id: uid, data: {
-              user: uid,
-              orderQuantity: quantity,
-              shippingAdress: details,
-              price: product.amount * quantity,
+      const body = { line_items: [product] };
+      axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+      if (phone && details) {
+        if (uid) {
+          const createOrder = await axios({
+            method: "POST",
+            url: `${domain}/order`,
+            data: {
+              _id: uid, data: {
+                user: uid,
+                orderQuantity: quantity,
+                shippingAdress: details,
+                price: product.amount * quantity,
+              }
+            },
+          });
+          if (createOrder) {
+            setProduct({
+              name: "Minna Chhop",
+              description: "A chhop for you and your family to be happy and healthy",
+              images: ["https://i.ibb.co/g6bDJ8z/IMG-20210910-173929-02-848.jpg"],
+              amount: 100,
+              currency: "usd",
+              quantity: quantity,
+            })
+
+            const data = await axios({
+              method: "post",
+              url: `${domain}/checkout`,
+              crossDomain: true,
+              data: { uid: uid, product, order: createOrder },
+            });
+    
+
+            const { error } = await stripe.redirectToCheckout({
+              sessionId: data.data.data.checkoutUrl.id,
+            });
+            if (error) {
+              setLoading(false);
+              toast.error('Got some error try again');
             }
-          },
-        });
-        if (createOrder) {
-          setProduct({
-            name: "Minna Chhop",
-            description: "A chhop for you and your family to be happy and healthy",
-            images: ["https://i.ibb.co/g6bDJ8z/IMG-20210910-173929-02-848.jpg"],
-            amount: 100,
-            currency: "usd",
-            quantity: quantity,
-          })
-
-          const data = await axios({
-            method: "post",
-            url: `${domain}/checkout`,
-            crossDomain: true,
-            data: { uid: uid, product, order:createOrder },
-          });
-    
-
-          const { error } = await stripe.redirectToCheckout({
-            sessionId: data.data.data.checkoutUrl.id,
-          });
-          if (error) {
-            setLoading(false);
-            toast.error('Got some error try again');
           }
+        } else {
+          setLoading(false);
+          toast.error("Join before you proceed to buy.")
         }
       } else {
+        toast.error("Please Enter your phone and details.");
         setLoading(false);
-        toast.error("Join before you proceed to buy.")
-      }
-    } else {
-      toast.error("Please Enter your phone and details.");
-      setLoading(false);
       
+      }
+    } catch(e) {
+      console.error(e);
     }
   };
 

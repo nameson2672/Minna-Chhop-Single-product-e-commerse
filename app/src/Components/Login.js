@@ -24,25 +24,30 @@ function Login({ loginModel, showModal, setUser, user }) {
 
 
   const responseGooglePass = (data) => {
-    console.log(data.profileObj);
-    if (data) {
-      setUser(data.profileObj);
+    try {
+      console.log(data.profileObj);
+      if (data) {
+        setUser(data.profileObj);
+      }
+      const googleRes = data.profileObj;
+      window.localStorage.setItem("name", googleRes.name);
+      window.localStorage.setItem("imageUrl", googleRes.imageUrl);
+      if (googleRes) {
+        setUser(googleRes);
+        loginModel(false);
+      }
+      axios({
+        method: "post",
+        url: "http://localhost:3000/login",
+        data: googleRes,
+      }).then((data) => {
+        setUid(data.data.data._id);
+        window.localStorage.setItem("uid", data.data.data._id);
+      });
+    } catch (error) {
+      console.log(error.message)
     }
-    const googleRes = data.profileObj;
-    window.localStorage.setItem("name", googleRes.name);
-    window.localStorage.setItem("imageUrl", googleRes.imageUrl);
-    if (googleRes) {
-      setUser(googleRes);
-      loginModel(false);
-    }
-    axios({
-      method: "post",
-      url: "http://localhost:3000/login",
-      data: googleRes,
-    }).then((data) => {
-      setUid(data.data.data._id);
-      window.localStorage.setItem("uid", data.data.data._id);
-    });
+    
   };
   const logout = () => {
     window.localStorage.removeItem('name');
@@ -56,6 +61,9 @@ function Login({ loginModel, showModal, setUser, user }) {
     console.log("Fail to login");
     console.log(data);
   };
+  const responseGoogleFail = (e) => {
+    console.log(e);
+  }
 
   return (
     <div
