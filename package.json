@@ -5,9 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node /backend/server",
+    "start": "node ./backend/server",
     "dev": "nodemon ./backend/server",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false NODE_NO_WARNINGS=1 npm install --prefix app && npm run build --prefix app"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix app && npm run build --prefix app"
   },
   "author": "",
   "license": "ISC",
@@ -27,5 +27,9 @@
     "stripe": "^8.175.0",
     "uuidv4": "^6.2.12",
     "xss-clean": "^0.1.1"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   }
 }
