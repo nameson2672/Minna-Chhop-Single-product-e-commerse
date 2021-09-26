@@ -61,9 +61,7 @@ function Login({ loginModel, showModal, setUser, user }) {
     console.log("Fail to login");
     console.log(data);
   };
-  const responseGoogleFail = (e) => {
-    console.log(e);
-  }
+
 
   return (
     <div
