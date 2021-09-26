@@ -6,7 +6,6 @@ import ClipLoader from "react-spinners/ClipLoader";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
-
 function ContactUs() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,21 +20,28 @@ function ContactUs() {
 
   const sumbit = () => {
     setLoading(true);
-    const data={
-        email: email,
-        message: details
-      }
-      axios({
+    const data = {
+      email: email,
+      message: details,
+    };
+    axios({
       method: "post",
-      url: "http://localhost:4000/contact",
-        data: data,
-    }).then((data) => {
-      toast.success(data.data.data);
-      setLoading(false);
-    }).catch((err) => {
-      setLoading(false);
-      toast.error(err.message);
+      header: {
+        "Content-Type":
+          "application/x-www-form-urlencoded; charset=UTF-8;application/json",
+      },
+      url: "http://localhost:3000/contact",
+      data: data,
     })
+      .then((data) => {
+        toast.success(data.data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+        toast.error(err.message);
+      });
   };
   return (
     <div className="bg-bodyBg my-5 sm:max-w-2xl sm:mx-auto xl:container">

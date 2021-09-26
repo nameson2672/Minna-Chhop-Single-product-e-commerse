@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon ./backend/server.js",
-    "heroku-postbuild":"npm install --prefix app && npm run build --prefix app"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix app && npm run build --prefix app"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "googleapis": "^63.0.0",
     "express-mongo-sanitize": "^2.1.0",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",

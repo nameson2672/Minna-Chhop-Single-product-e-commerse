@@ -12,15 +12,15 @@ export const createOrder = async (req, res, next) => {
         const order = await Order.create({ ...orderItems });
         const options = {
             email: user.email,
-            subject: 'Sign in from device',
-            html: `Hey, ${user.name} thank you for buying our chhop. Chhop will be deliver to you soon`
+            subject: 'Ordered',
+            html: `Hey, ${user.name} thank you for ordering our chhop. Chhop will be deliver to you soon`
         }
         if (order) {
-            mailSender(options);
+            // mailSender(options);
         }
         res.status(200).json({
             sucess: true,
-            data: "order",
+            data: order._id,
         });
 
         next();

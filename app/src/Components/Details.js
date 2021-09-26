@@ -16,10 +16,12 @@ function Details({ user, price, quantity }) {
     images: ["https://i.ibb.co/g6bDJ8z/IMG-20210910-173929-02-848.jpg"],
     amount: 100,
     currency: "usd",
-    quantity: quantity,
+    quantity: 2,
   });
+  console.log(quantity)
 
   const handleClick = async (event) => {
+    setProduct({... quantity = quantity})
     setLoading(true);
     const stripe = await loadStripe(
       "pk_test_51JY6mgBCGK9w7fWO0rZyM9IhQoQZvoJmmpXzNfdUxBtwtKEkIhx1eYYOgdcjgGUro4m05gzXwAFHwfcALlI4p7Vw00460O6klJ"
@@ -38,16 +40,25 @@ function Details({ user, price, quantity }) {
               user: uid,
               orderQuantity: quantity,
               shippingAdress: details,
-              price: price * 100,
+              price: product.amount * quantity,
             }
           },
         });
         if (createOrder) {
+          setProduct({
+            name: "Minna Chhop",
+            description: "A chhop for you and your family to be happy and healthy",
+            images: ["https://i.ibb.co/g6bDJ8z/IMG-20210910-173929-02-848.jpg"],
+            amount: 100,
+            currency: "usd",
+            quantity: quantity,
+          })
+
           const data = await axios({
             method: "post",
             url: `${domain}/checkout`,
             crossDomain: true,
-            data: { uid: uid, product },
+            data: { uid: uid, product, order:createOrder },
           });
     
 
